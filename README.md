@@ -35,7 +35,11 @@ pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-## 🎯 Use Case
+## � Live Demo
+
+[https://sudhar-t10-tax-fraud-detection.streamlit.app](https://sudhar-t10-tax-fraud-detection.streamlit.app)
+
+## �🎯 Use Case
 
 Helps government agencies detect hidden fraud networks that are not visible in isolated datasets.
 
