@@ -53,6 +53,10 @@ if run_analysis:
         # Fraud Detection
         cycles = detect_cycles(G)
         suspicious = suspicious_nodes(G)
+        anomalies = detect_anomalies(G)
+
+        # Combine suspicious and anomalies
+        all_suspicious = {**suspicious, **anomalies}
 
         # Network Stats
         from src.fraud_detection import network_stats
@@ -60,8 +64,8 @@ if run_analysis:
 
     # Analysis Results
     st.header("🔍 Fraud Analysis Results")
-    result = analyze_fraud(cycles, suspicious)
-    st.text_area("Analysis Report", result, height=150)
+    result = analyze_fraud(cycles, all_suspicious, stats)
+    st.text_area("Analysis Report", result, height=300)
 
     # Statistics
     st.header("📈 Network Statistics")
@@ -73,7 +77,7 @@ if run_analysis:
     with col3:
         st.metric("Circular Transactions", len(cycles))
     with col4:
-        st.metric("Suspicious Nodes", len(suspicious))
+        st.metric("Suspicious Nodes", len(all_suspicious))
 
     col5, col6, col7 = st.columns(3)
     with col5:
@@ -87,8 +91,15 @@ if run_analysis:
     st.header("🌐 Transaction Network Graph")
     fig, ax = plt.subplots(figsize=(12, 8))
 
-    # Color nodes: red for suspicious, blue for normal
-    node_colors = ['red' if node in suspicious else 'lightblue' for node in G.nodes()]
+    # Color nodes: red for suspicious, orange for anomalies, blue for normal
+    node_colors = []
+    for node in G.nodes():
+        if node in suspicious:
+            node_colors.append('red')
+        elif node in anomalies:
+            node_colors.append('orange')
+        else:
+            node_colors.append('lightblue')
 
     pos = nx.spring_layout(G, k=1, iterations=50)
     nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=600,
@@ -108,9 +119,9 @@ if run_analysis:
     st.pyplot(fig)
 
     # Detailed Suspicious Nodes
-    if suspicious:
+    if all_suspicious:
         st.header("🚨 Detailed Suspicious Nodes Analysis")
-        suspicious_df = pd.DataFrame(list(suspicious.items()), columns=["Node ID", "Reason"])
+        suspicious_df = pd.DataFrame(list(all_suspicious.items()), columns=["Node ID", "Reason"])
         st.dataframe(suspicious_df, use_container_width=True)
 
     # Export Results

@@ -6,27 +6,35 @@ This project detects complex tax evasion and fraudulent networks by linking anon
 
 ## 🔍 Features
 
-* Multi-source data integration
-* Privacy-preserving anonymization
-* Graph-based fraud detection
-* Circular transaction detection
-* AI-based explanation system
-* Streamlit interactive dashboard
+* Multi-source data integration with privacy-preserving anonymization
+* Advanced graph-based fraud detection using NetworkX
+* Circular transaction detection and analysis
+* Anomaly detection using machine learning (DBSCAN clustering)
+* AI-powered analysis assistant providing risk insights and investigative recommendations
+* Interactive Streamlit dashboard with network visualization
+* Comprehensive fraud risk assessment and reporting
 
 ## 🛠️ Tech Stack
 
-* Python (Pandas, NetworkX, Scikit-learn)
-* Streamlit (Frontend)
-* Flask (Backend - optional)
-* GitHub (Version Control)
+* **Python**: Core language for data processing and analysis
+* **Pandas**: Data manipulation and analysis
+* **NetworkX**: Graph creation and analysis
+* **Scikit-learn**: Machine learning for anomaly detection
+* **Streamlit**: Interactive web dashboard
+* **Matplotlib**: Network visualization
+* **Seaborn**: Statistical visualizations
 
 ## 📊 How it Works
 
-1. Load datasets (companies, owners, transactions)
-2. Anonymize sensitive data
-3. Build graph network
-4. Detect fraud patterns
-5. Display results via Streamlit dashboard
+1. **Data Loading & Anonymization**: Load and anonymize company, transaction, and owner data from multiple sources
+2. **Graph Construction**: Build directed graph network from transaction relationships
+3. **Advanced Fraud Detection**:
+   - Detect circular transactions (potential money laundering)
+   - Identify suspicious nodes using centrality measures
+   - Apply ML-based anomaly detection (DBSCAN clustering)
+4. **AI-Powered Analysis**: Generate intelligent risk assessments and investigative recommendations
+5. **Interactive Visualization**: Explore network graphs with color-coded risk levels
+6. **Comprehensive Reporting**: Export detailed analysis reports for investigators
 
 ## ▶️ Run Locally
 
@@ -39,9 +47,15 @@ streamlit run streamlit_app.py
 
 [https://sudhar-t10-tax-fraud-detection.streamlit.app](https://sudhar-t10-tax-fraud-detection.streamlit.app)
 
-## �🎯 Use Case
+## 🤖 AI-Powered Analysis Assistant
 
-Helps government agencies detect hidden fraud networks that are not visible in isolated datasets.
+The system includes an intelligent analysis assistant that provides:
+
+* **Risk Assessment**: Overall fraud risk level based on detected patterns
+* **Pattern Explanation**: Detailed explanations of suspicious activities
+* **Investigative Recommendations**: Actionable guidance for investigators
+* **Network Insights**: Analysis of graph structure and connectivity patterns
+* **Confidence Scoring**: AI confidence levels for different detection methods
 
 ## 🤖 Future Improvements
 
