@@ -5,3 +5,4 @@ scikit-learn
 matplotlib
 seaborn
 pyvis
+neo4j
